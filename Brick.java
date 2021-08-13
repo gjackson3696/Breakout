@@ -2,7 +2,7 @@
 /**
  * Write a description of class Brick here.
  *
- * @author Gary
+ * @author Gary Jackson
  * @version (a version number or a date)
  */
 public class Brick extends GameObject
