@@ -3,11 +3,10 @@
  * Write a description of class Brick here.
  *
  * @author Gary Jackson
- * @version (a version number or a date)
+ * @version 10/13
  */
 public class Brick extends GameObject
 {
-    // instance variables - replace the example below with your own
     private int x;
 
     /**
@@ -17,17 +16,5 @@ public class Brick extends GameObject
     {
         // initialise instance variables
         x = 0;
-    }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
     }
 }

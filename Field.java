@@ -1,34 +1,33 @@
-
+import java.awt.MouseInfo;
 /**
  * Write a description of class Field here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Gary Jackson
+ * @version 8/25
  */
 public class Field extends GameObject implements Position
 {
-    private int x;
-    private int y;
     private Canvas canvas;
+    private Paddle paddle;
+    private Ball ball;
 
     /**
      * Constructor for objects of class Field
      */
     public Field()
     {
-        x = 0;
+        canvas = Canvas.getInstance();
+        paddle = new Paddle(0,500,25,5,Color.GREEN);
+        ball = new Ball(50,50,5,Color.RED);
     }
-
+    
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * Updates all objjects on the playing field.
      */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    public void update() {
+        paddle.update();
+        ball.update();
+        canvas.repaint();
     }
     public Canvas getCanvas()
     {

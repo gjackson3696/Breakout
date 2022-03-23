@@ -23,7 +23,8 @@ public class Canvas
     private JFrame frame;
     private CanvasComponent component;
 
-    private static final int MIN_SIZE = 100;
+    private static final int MIN_SIZE = 1000;
+    private static final int MIN_Y = 500;
     private static final int MARGIN = 10;
     private static final int LOCATION_OFFSET = 120;
 
@@ -49,7 +50,7 @@ public class Canvas
         public Dimension getPreferredSize()
         {
             int maxx = MIN_SIZE;
-            int maxy = MIN_SIZE;
+            int maxy = MIN_Y;
             if (background != null)
             {
                 maxx = Math.max(maxx, background.getWidth());
@@ -171,8 +172,8 @@ public class Canvas
     public void saveToDisk(String fileName)
     {
         Dimension dim = component.getPreferredSize();
-    	java.awt.Rectangle rect = new java.awt.Rectangle(0, 0, dim.width, dim.height);
-    	BufferedImage image = new BufferedImage(rect.width, rect.height, BufferedImage.TYPE_INT_RGB);
+        java.awt.Rectangle rect = new java.awt.Rectangle(0, 0, dim.width, dim.height);
+        BufferedImage image = new BufferedImage(rect.width, rect.height, BufferedImage.TYPE_INT_RGB);
         Graphics2D g = (Graphics2D) image.getGraphics();
         g.setColor(java.awt.Color.WHITE);
         g.fill(rect);
@@ -187,6 +188,6 @@ public class Canvas
         {
             System.err.println("Was unable to save the image to " + fileName);
         }
-    	g.dispose();    	
+        g.dispose();        
     }
 }
