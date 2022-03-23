@@ -7,5 +7,5 @@
  */
 public interface CollisionDetection
 {
-    int detectCollision(GameObject objA, GameObject objB);
+    int detectCollision(GameObject object);
 }

@@ -1,4 +1,3 @@
-
 /**
  * Write a description of class Ball here.
  *
@@ -14,6 +13,8 @@ public class Ball extends GameObject implements Position
     {
         this.setXPos(x);
         this.setYPos(y);
+        this.setWidth(diameter);
+        this.setHeight(diameter);
         Ellipse newBall = new Ellipse(x,y,diameter,diameter);
         ball = newBall;
         newBall.setColor(color);
@@ -23,30 +24,63 @@ public class Ball extends GameObject implements Position
     public void update(){
         try
         {
-            Thread.sleep(9);
+            Thread.sleep(8);
         }
         catch (InterruptedException ie)
         {
             ie.printStackTrace();
         }
-        if(this.getXPos()>=Game.maxX || this.getXPos()<1) {
-            if(direction[0]==1) {
-                direction[0] = -1;
-            } else {
-                direction[0] = 1;
-            }
+        if(this.getXPos()+this.getWidth()>=Game.maxX || this.getXPos()<=0) {
+            this.reverseXDirection();
         }
-        if(this.getYPos()>=Game.maxY || this.getYPos()<1) {
-            if(direction[1]==1) {
-                direction[1] = -1;
-            } else {
-                direction[1] = 1;
-            }
+        if(this.getYPos()<1) {
+            this.reverseYDirection();
         }
         this.setXPos(this.getXPos()+direction[0]);
         this.setYPos(this.getYPos()+direction[1]);
         ball.translate(direction[0],direction[1]);
         ball.fill();
         return;
+    }
+    
+    public int detectCollision2(GameObject object) {
+        if(this.getYPos()>=500) {
+            if(object.detectCollision(this)==1) {
+                this.reverseYDirection();
+                return 1;
+            } else {//,........43333333333333333333333333333e
+                return 2;
+            }
+        } else if(object.detectCollision(this) != 0) {
+            this.reverseYDirection();
+            return object.detectCollision(this);
+        }
+        return 0;
+    }
+    public int detectCollision(GameObject object) {
+        switch(object.detectCollision(this)) {
+            case 1: this.reverseYDirection();
+                    return 1;
+            case 2: return 2;
+        }
+        return 0;
+    }
+    public int detectCollision3(GameObject object) {
+        return 0;
+    }
+    
+    private void reverseXDirection() {
+        if(direction[0]==1) {
+            direction[0] = -1;
+        } else {
+            direction[0] = 1;
+        }
+    }
+    private void reverseYDirection() {
+        if(direction[1]==1){
+            direction[1] = -1;
+        } else {
+            direction[1] = 1;
+        }
     }
 }

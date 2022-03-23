@@ -10,6 +10,8 @@ public abstract class GameObject implements Position, CollisionDetection
     // instance variables - replace the example below with your own
     private int xPos;
     private int yPos;
+    private int height;
+    private int width;
 
     public int getXPos()
     {
@@ -18,6 +20,14 @@ public abstract class GameObject implements Position, CollisionDetection
     public int getYPos()
     {
         return yPos;
+    }
+    public int getHeight()
+    {
+        return height;
+    }
+    public int getWidth()
+    {
+        return width;
     }
     public int setXPos(int x)
     {
@@ -31,6 +41,14 @@ public abstract class GameObject implements Position, CollisionDetection
         yPos = y;
         return oldY;
     }
+    public void setHeight(int h)
+    {
+        height = h;
+    }
+    public void setWidth(int w)
+    {
+        width = w;
+    }
     public int[] getPosition()
     {
         int[] pos = {xPos,yPos};
@@ -43,7 +61,7 @@ public abstract class GameObject implements Position, CollisionDetection
         yPos = y;
         return oldPos;
     }
-    public int detectCollision(GameObject objA, GameObject objB)
+    public int detectCollision(GameObject object)
     {
         return 0;
     }

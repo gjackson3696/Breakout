@@ -17,10 +17,8 @@ public class Game
     public Game() throws InterruptedException
     {
         playingField = new Field();
-        while (true) {
-        //while (System.in.available() == 0) {
+        while (playingField.update()) {
             playingField.update();
-            //Thread.sleep(100);
         }
     }
 
